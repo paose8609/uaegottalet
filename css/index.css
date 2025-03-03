@@ -1,0 +1,68 @@
+#edo {
+  margin: 0;
+  padding: 0;
+  display: none;
+  background-color: #000;
+}
+
+#lagos {
+  margin: 0;
+  padding: 0;
+  display: none;
+  background-color: #000;
+}
+#owerri {
+  margin: 0;
+  padding: 0;
+  display: none;
+  background-color: #fff;
+}
+#abuja {
+  margin: 0;
+  padding: 0;
+  display: none;
+  background-color: #fff;
+}
+
+.tokpart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  /* Full viewport height */
+  /* Optional: Add a background color */
+}
+
+/* Popup styles */
+.popup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  display: none;
+  z-index: 999;
+  /* Lower z-index */
+}
+
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 998;
+  /* Lower z-index for the overlay */
+}
+
+.popup img {
+  border-radius: 50%;
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+}

